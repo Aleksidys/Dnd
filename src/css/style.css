@@ -1,0 +1,62 @@
+.app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+}
+
+.boards {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.board {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.list {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  margin: 5px;
+  padding: 10px;
+}
+
+.card.dragged {
+  border: 1px solid #ccc;
+  margin: 5px;
+  padding: 10px;
+  cursor: grab;
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  background-color: grey;
+}
+
+
+.textarea-button {
+  display: none;
+}
+
+.show-textarea-button {
+  display: block;
+}
+
+.button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
