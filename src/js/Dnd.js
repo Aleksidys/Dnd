@@ -26,7 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (oldBoard) {
                 oldBoard.removeChild(draggedElement);
             }
-        } else {
+        }if (oldBoard == newBoard) {
+            draggedElement.classList.remove('dragged');
+            draggedElement.style.position = 'relative';
+            draggedElement.style.top = null;
+            draggedElement.style.left = null;
+
+        }
+         else {
+            draggedElement.classList.remove('dragged');
             draggedElement.style.position = 'relative';
             draggedElement.style.top = null;
             draggedElement.style.left = null;
