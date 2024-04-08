@@ -12,18 +12,18 @@
 
 .boards {
   display: flex;
-  justify-content: center; /* Центрируем доски по горизонтали */
-  gap: 20px; /* Расстояние между досками */
+  justify-content: center; 
+  gap: 20px; 
 }
 
 .board {
-  width: 200px; /* Фиксированная ширина доски */
+  width: 200px; 
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрируем содержимое по центру доски */
+  align-items: center; 
 }
 
 .list {
@@ -32,11 +32,11 @@
 }
 
 .card {
-  width: 180px; /* Фиксированная ширина карточки */
+  width: 180px;
   border: 1px solid #ccc;
   margin: 5px;
   padding: 10px;
-  box-sizing: border-box; /* Учитываем padding внутри карточки */
+  box-sizing: border-box; 
 }
 
 .card.dragged {
