@@ -22,16 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
             draggedElement.style.top = null;
             draggedElement.style.left = null;
             draggedElement.classList.remove('dragged');
-
-            if (oldBoard) {
-                oldBoard.removeChild(draggedElement);
-            }
-        }if (oldBoard == newBoard) {
+        } else if (oldBoard && oldBoard == newBoard) {
             draggedElement.classList.remove('dragged');
             draggedElement.style.position = 'relative';
             draggedElement.style.top = null;
             draggedElement.style.left = null;
-
         }
          else {
             draggedElement.classList.remove('dragged');
@@ -42,7 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     boards.addEventListener('mousedown', function(e) {
-        e.preventDefault;
+        e.preventDefault();
+
         if (e.target.classList.contains('card')) {
             draggedElement = e.target;
             const rect = draggedElement.getBoundingClientRect();
@@ -58,6 +54,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    boards.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        const targetBoard = e.target.closest('.board');
+        if (targetBoard) {
+            targetBoard.classList.add('over');
+        }
+    });
+
+    boards.addEventListener('dragleave', function(e) {
+        const targetBoard = e.target.closest('.board');
+        if (targetBoard) {
+            targetBoard.classList.remove('over');
+        }
+    });
+
     addTaskButtons.forEach(button => {
         button.addEventListener('click', function() {
             const closestBoard = button.closest('.board');
@@ -65,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
             textareaButton.classList.toggle('show-textarea-button');
             const textarea = textareaButton.querySelector('.textarea');
             const sendButton = textareaButton.querySelector('.send');
+
+            textarea.removeAttribute('disabled');
+            textarea.focus();
 
             sendButton.addEventListener('click', function() {
                 const list = closestBoard.querySelector('.list');
@@ -78,12 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     list.appendChild(newTask);
                     textarea.value = '';
                 } else {
-                    alert('Please enter a task before sending!');
+                    return
                 }
             });
         });
     });
+
+    const textareas = document.querySelectorAll('textarea');
+    textareas.forEach(textarea => {
+        textarea.addEventListener('click', function() {
+            this.focus();
+        });
+    });
 });
-
-
-
